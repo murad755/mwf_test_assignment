@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.44.1",
-    "@types/node": "^20.12.12"
+    "@types/node": "^20.12.12",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.44.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "dev": "npx playwright test --project=Chrome --ui",
+    "test:chrome-report": "npx playwright test --project=Chrome --reporter=html && npx playwright show-report",
+    "test:firefox-report": "npx playwright test --project=Firefox --reporter=line,allure-playwright",
+    "test:safari-report": "npx playwright test --project=Safari --reporter=line,allure-playwright",
+    "headed:all": "npx playwright test --headed"
   }
 }

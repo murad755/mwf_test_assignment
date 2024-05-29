@@ -1,15 +1,20 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+dotenv.config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  expect: {
+    timeout: 20000,
+  },
+  timeout: 30000,
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -26,25 +31,55 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+
+      /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+
+
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: `Chrome`,
+      use: {
+        browserName: `chromium`,
+        channel: `chrome`,
+        viewport: { width: 1720, height: 850 },
+        ignoreHTTPSErrors: true,
+        screenshot: `only-on-failure`,
+        video: `retain-on-failure`,
+        trace: `retain-on-failure`,
+        baseURL: 'https://practicetestautomation.com/',
+      }
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: `Firefox`,
+      use: {
+        browserName: `firefox`,
+        viewport: { width: 1720, height: 850 },
+        ignoreHTTPSErrors: true,
+        headless: true,
+        screenshot: `only-on-failure`,
+        video: `retain-on-failure`,
+        trace: `retain-on-failure`,
+        baseURL: 'https://practicetestautomation.com/',
+      }
     },
 
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: `Safari`,
+      use: {
+        browserName: `webkit`,
+        viewport: { width: 1720, height: 850 },
+        ignoreHTTPSErrors: true,
+        baseURL: 'https://practicetestautomation.com/',
+        screenshot: `only-on-failure`,
+        video: `retain-on-failure`,
+        trace: `retain-on-failure`
+      }
     },
 
     /* Test against mobile viewports. */
