@@ -19,9 +19,6 @@ npm install
 # Development
 npm run dev
 
-# Execute all tests
-npm run test
-
 # Test in chrome browser with generated report
 npm run test:chrome-report
 # Test in Firefox browser with generated report
@@ -29,6 +26,6 @@ npm run test:firefox-report
 # Test in Safari browser with generated report
 npm run test:safari-report
 
-# Headed
+# Run all tests in Headed mode
 npm run headed:all
 ```
