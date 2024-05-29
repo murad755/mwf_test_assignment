@@ -10,7 +10,9 @@ We are using https://practicetestautomation.com/practice-test-login/ as the Appl
 * npm
 
 ## Local development:
-Change directory to the project root and run the following commands:
+Change directory to the project root. Rename ".env.example" to ".env".
+
+Run the following commands:
 ```bash
 npm install
 
